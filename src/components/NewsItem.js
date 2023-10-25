@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import favicon  from "./favicon.jpg";
 
 export default class NewsItem extends Component {
 
