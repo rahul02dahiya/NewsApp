@@ -1,0 +1,20 @@
+.spin {
+    pointer-events: none;
+    
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .spin {
+      animation: App-logo-spin infinite 5s linear;
+    }
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
