@@ -6,7 +6,7 @@ export default class News extends Component {
 
 static defaultProps = {
   country : "in",
-  pageSize : 9,
+  pageSize : 8,
   category : "general"
 }
 
@@ -119,7 +119,7 @@ static propTypes = {
               console.log(element)
               return (
                 <div className="col-md-4" key={element.url}>
-                  <NewsItem title={element.title} description={element.description} imgUrl={element.urlToImage} newsUrl={element.url} />
+                  <NewsItem title={element.title} description={element.description} imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
                 </div>
               )
             })

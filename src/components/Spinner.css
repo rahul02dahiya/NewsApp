@@ -1,6 +1,7 @@
-.spin {
+.spin img{
     pointer-events: none;
-    
+    width: 200px;
+    height: 200px;
   }
   
   @media (prefers-reduced-motion: no-preference) {
