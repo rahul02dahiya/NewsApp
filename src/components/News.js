@@ -82,7 +82,7 @@ static propTypes = {
   async updateNews() {
     console.log("Update news");
     this.props.setProgress(10);
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page}&pagesize=${this.props.pageSize}`
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pagesize=${this.props.pageSize}`
     this.props.setProgress(25);
     let data = await fetch(url);
     this.props.setProgress(35);
@@ -98,7 +98,7 @@ static propTypes = {
   }
   async componentDidMount() {
     console.log("component  inbound");
-    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page}&pagesize=${this.props.pageSize}`
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pagesize=${this.props.pageSize}`
     // let data = await fetch(url);
     // let parsedData = await data.json()
     // console.log(parsedData)
@@ -111,7 +111,7 @@ static propTypes = {
 
   handlePreClick = async () => {
     // console.log("pre button clicked")
-    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`
     // this.setState({loading:true})
     // let data = await fetch(url);
     // let parsedData = await data.json()
@@ -126,7 +126,7 @@ static propTypes = {
   }
   handleNextClick = async () => {
     // console.log("next button clicked");
-    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`
     // let data = await fetch(url);
     // let parsedData = await data.json()
     // console.log(parsedData)
@@ -140,7 +140,7 @@ static propTypes = {
 
   fetchMoreData = async () =>{
   this.setState({page : this.state.page+1})
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page}&pagesize=${this.props.pageSize}`
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page+1}&pagesize=${this.props.pageSize}`
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData)
@@ -159,7 +159,7 @@ static propTypes = {
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
-          hasMore={this.state.articles.length != this.state.totalResults}
+          hasMore={this.state.articles.length !== this.state.totalResults}
           loader={this.hasMore ? <h4>loading...</h4> : "" }
         >
           <div className="container my-3">
