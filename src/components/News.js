@@ -69,9 +69,9 @@ static propTypes = {
     }
   }
 
-  async componentDidMount() {
-    console.log("component  inbound");
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`
+  async updateNews() {
+    console.log("Update news");
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page}&pagesize=${this.props.pageSize}`
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData)
@@ -80,38 +80,53 @@ static propTypes = {
       totalResults: parsedData.totalResults
     })
   }
+  async componentDidMount() {
+    console.log("component  inbound");
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page}&pagesize=${this.props.pageSize}`
+    // let data = await fetch(url);
+    // let parsedData = await data.json()
+    // console.log(parsedData)
+    // this.setState({
+    //   articles: parsedData.articles,
+    //   totalResults: parsedData.totalResults
+    // })
+  this.updateNews()
+  }
 
   handlePreClick = async () => {
-    console.log("pre button clicked")
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`
-    this.setState({loading:true})
-    let data = await fetch(url);
-    let parsedData = await data.json()
-    console.log(parsedData)
-    this.setState({
-      articles: parsedData.articles,
-      page: this.state.page - 1,
-      loading:false
-    })
-  
+    // console.log("pre button clicked")
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page - 1}&pagesize=${this.props.pageSize}`
+    // this.setState({loading:true})
+    // let data = await fetch(url);
+    // let parsedData = await data.json()
+    // console.log(parsedData)
+    // this.setState({
+    //   articles: parsedData.articles,
+    //   page: this.state.page - 1,
+    //   loading:false
+    // })
+  this.setState({page : this.state.page-1})
+  this.updateNews()
   }
   handleNextClick = async () => {
-    console.log("next button clicked");
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`
-    let data = await fetch(url);
-    let parsedData = await data.json()
-    console.log(parsedData)
-    this.setState({
-      articles: parsedData.articles,
-      page: this.state.page + 1
-    })
+    // console.log("next button clicked");
+    // let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1ec798ea55174a64937f2fd3af36599a&page=${this.state.page + 1}&pagesize=${this.props.pageSize}`
+    // let data = await fetch(url);
+    // let parsedData = await data.json()
+    // console.log(parsedData)
+    // this.setState({
+    //   articles: parsedData.articles,
+    //   page: this.state.page + 1
+    // })
+  this.setState({page : this.state.page+1})
+  this.updateNews()
   }
 
   render() {
     console.log("render")
     return (
       <div className='container my-3'>
-        <h1 style={{ "textAlign": "center" }}>News Monkey - Top Headlines</h1>
+        <h2 style={{ "textAlign": "center" }}>News Monkey - Top Headlines</h2>
         {this.state.loading && <Spinner />}
        {!this.state.loading && <div className="row">
           {
