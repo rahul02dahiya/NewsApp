@@ -9,7 +9,7 @@ export default class News extends Component {
 
 static defaultProps = {
   country : "in",
-  pageSize : 6,
+  pageSize : 3,
   category : "general"
 }
 
@@ -153,8 +153,8 @@ static propTypes = {
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
-          hasMore={this.state.articles.length < this.state.totalResults}
-          loader={<h4>loading...</h4>}
+          hasMore={this.state.articles.length != this.state.totalResults}
+          loader={this.hasMore ? <h4>loading...</h4> : "" }
         >
           <div className="container my-3">
        <div className="row">
