@@ -59,7 +59,12 @@ static propTypes = {
       "content": "GamesBeat Next unites gaming industry leaders for exceptional content, networking, and deal-making opportunities. Join us on Oct 23-24 in San Francisco.  Register Now\r\nIn case youve somehow missed it… [+291 chars]"
     }
   ]
-  constructor() {
+
+  capitalizeFirstLetter = (string)=> {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+  constructor(props) {
     super();
     console.log("constructor called");
     this.state = {
@@ -67,6 +72,7 @@ static propTypes = {
       loading: false,
       page: 1
     }
+    document.title = `${this.capitalizeFirstLetter(props.category)} - News Monkey`;
   }
 
   async updateNews() {
