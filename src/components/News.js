@@ -81,14 +81,20 @@ static propTypes = {
 
   async updateNews() {
     console.log("Update news");
+    this.props.setProgress(10);
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=564cfe2f82c84008a82de3bd0f1eecaa&page=${this.state.page}&pagesize=${this.props.pageSize}`
+    this.props.setProgress(25);
     let data = await fetch(url);
+    this.props.setProgress(35);
     let parsedData = await data.json()
     console.log(parsedData)
+    this.props.setProgress(50);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults
     })
+    this.props.setProgress(100);
+
   }
   async componentDidMount() {
     console.log("component  inbound");
