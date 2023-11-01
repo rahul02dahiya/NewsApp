@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-export default class NewsItem extends Component {
+import React from 'react'
 
- 
-  render() {
-    let {title, description, imgUrl, newsUrl, author, date} = this.props;
+const NewsItem = (props)=> {
+    let {title, description, imgUrl, newsUrl, author, date} = props;
     date = new Date(date);
     date = date.toGMTString();
     return (
@@ -20,4 +18,5 @@ export default class NewsItem extends Component {
     </div></div>
     )
   }
-}
+
+export default NewsItem ;
