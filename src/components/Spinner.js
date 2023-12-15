@@ -12,3 +12,5 @@ const Spinner = ()=> {
 }
 
 export default Spinner;
+
+// Just a test comment
